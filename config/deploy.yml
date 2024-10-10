@@ -2,7 +2,7 @@
 service: nocodb
 
 # Name of the container image.
-image: nocodb/nocodb
+image: ptuladhar/nocodb
 
 # Deploy to these servers.
 servers:
@@ -24,13 +24,13 @@ proxy:
   healthcheck:
     path: /
     interval: 10
-    timeout: 10  
+    timeout: 5 
 
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
   # server: registry.digitalocean.com / ghcr.io / ...
-  username: my-user
+  username: ptuladhar
 
   # Always use an access token rather than real password (pulled from .kamal/secrets).
   password:
@@ -61,8 +61,9 @@ builder:
 
 # Use a persistent storage volume.
 #
-# volumes:
-#   - "app_storage:/app/storage"
+volumes:
+  - "/nocodb:/usr/app/data/"
+  # - "app_storage:/app/storage"
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old
