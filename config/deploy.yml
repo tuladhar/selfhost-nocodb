@@ -2,15 +2,15 @@
 service: nocodb
 
 # Name of the container image.
-image: ptuladhar/nocodb
+image: my-user/nocodb
 
 # Deploy to these servers.
 servers:
   web:
-    - 5.78.123.98
+    - 192.168.0.1
   # job:
   #   hosts:
-  #     - 192.168.0.1
+  #     - c
   #   cmd: bin/jobs
 
 # Enable SSL auto certification via Let's Encrypt (and allow for multiple apps on one server).
@@ -18,7 +18,7 @@ servers:
 # in Cloudflare's SSL/TLS setting to "Full" to enable end-to-end encryption. 
 proxy: 
   ssl: true
-  host: nocodb.purutuladhar.com
+  host: app.example.com
   # kamal-proxy connects to your container over port 80, use `app_port` to specify a different port.
   app_port: 8080
   healthcheck:
@@ -30,7 +30,7 @@ proxy:
 registry:
   # Specify the registry server, if you're not using Docker Hub
   # server: registry.digitalocean.com / ghcr.io / ...
-  username: ptuladhar
+  username: my-user
 
   # Always use an access token rather than real password (pulled from .kamal/secrets).
   password:
